@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: none
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, health
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      enabled: true
+
+springdoc:
+  show-actuator: true
+
+system:
+  delay: ${DELAY:5}
+  public-node-url: ${PUBLIC_NODE_URL:default_value}
+  app-id: ${PUBLIC_NODE_KEY:default_value}
+  last-block-id-key: 'LAST_BLOCK_ID'
+
+logging:
+  level:
+    root: ERROR
+    org.springframework: DEBUG
+    com.hacken.test_task: DEBUG
